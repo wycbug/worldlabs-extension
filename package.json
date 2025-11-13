@@ -2,7 +2,7 @@
   "name": "marble-worldlabs-extension",
   "description": "Browser extension for Marble WorldLabs to view detailed world information and download assets",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",
