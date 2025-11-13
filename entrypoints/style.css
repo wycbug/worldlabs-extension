@@ -1,0 +1,179 @@
+/* Marble WorldLabs Extension Sidebar Styles */
+.marble-extension-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 384px !important;
+  height: 100vh !important;
+  background: white !important;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.15) !important;
+  z-index: 10000 !important;
+  overflow-y: auto !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.marble-extension-header {
+  padding: 20px !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.marble-extension-title {
+  margin: 0 !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+}
+
+.marble-extension-close {
+  background: none !important;
+  border: none !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  color: #6b7280 !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  transition: color 0.2s !important;
+}
+
+.marble-extension-close:hover {
+  color: #374151 !important;
+  background: #f3f4f6 !important;
+}
+
+.marble-extension-content {
+  padding: 20px !important;
+}
+
+.marble-extension-space-y-6 > * + * {
+  margin-top: 24px !important;
+}
+
+.marble-extension-space-y-2 > * + * {
+  margin-top: 8px !important;
+}
+
+.marble-extension-text-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.marble-extension-text-subtitle {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111827 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.marble-extension-text-body {
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.marble-extension-text-small {
+  font-size: 12px !important;
+  color: #374151 !important;
+}
+
+.marble-extension-prompt-box {
+  background: #f9fafb !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #1f2937 !important;
+  max-height: 192px !important;
+  overflow-y: auto !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.marble-extension-btn {
+  padding: 6px 12px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  transition: all 0.2s !important;
+}
+
+.marble-extension-btn-primary {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.marble-extension-btn-primary:hover {
+  background: #2563eb !important;
+}
+
+.marble-extension-btn-success {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+.marble-extension-btn-success:hover {
+  background: #059669 !important;
+}
+
+.marble-extension-btn-purple {
+  background: #8b5cf6 !important;
+  color: white !important;
+}
+
+.marble-extension-btn-purple:hover {
+  background: #7c3aed !important;
+}
+
+.marble-extension-image {
+  width: 100% !important;
+  border-radius: 8px !important;
+  margin-bottom: 8px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.marble-extension-model-badge {
+  background: #f3f4f6 !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  color: #374151 !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.marble-extension-stats {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 14px !important;
+  color: #374151 !important;
+}
+
+.marble-extension-float-btn {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: #3b82f6 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  z-index: 9999 !important;
+  font-size: 18px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  transition: all 0.2s !important;
+}
+
+.marble-extension-float-btn:hover {
+  background: #2563eb !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2) !important;
+}

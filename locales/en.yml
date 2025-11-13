@@ -1,0 +1,18 @@
+extName: Marble WorldLabs Extension
+extDescription: Browser extension for Marble WorldLabs to view detailed world information and download assets
+worldDetails: World Details
+loadingWorldData: Loading world data...
+failedToLoadWorldData: Failed to load world data
+showWorldDetails: Show World Details
+stats: Stats
+likes: $1 likes
+prompt: Prompt
+copyPrompt: 📋 Copy Prompt
+copied: ✅ Copied!
+inputImage: Input Image
+downloadImage: ⬇️ Download Image
+model: Model
+exportFiles: Export Files
+downloadQuality: ⬇️ Download $1 Quality
+unknown: Unknown
+by: by $1

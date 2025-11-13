@@ -1,0 +1,18 @@
+extName: Marble WorldLabs 扩展
+extDescription: Marble WorldLabs 浏览器扩展，用于查看详细世界信息和下载资源
+worldDetails: 世界详情
+loadingWorldData: 正在加载世界数据...
+failedToLoadWorldData: 加载世界数据失败
+showWorldDetails: 显示世界详情
+stats: 统计
+likes: $1 个赞
+prompt: 提示词
+copyPrompt: 📋 复制提示词
+copied: ✅ 已复制！
+inputImage: 输入图像
+downloadImage: ⬇️ 下载图像
+model: 模型
+exportFiles: 导出文件
+downloadQuality: ⬇️ 下载 $1 质量
+unknown: 未知
+by: 作者：$1
