@@ -1,6 +1,12 @@
 import './style.css';
+import { storage } from 'wxt/utils/storage';
 
 type Language = 'en' | 'zh_CN';
+
+// Define a typed storage item for preferred language (same as in popup)
+const preferredLanguageStorage = storage.defineItem<Language>('local:preferredLanguage', {
+  fallback: 'en',
+});
 
 // Translation maps
 const translations = {
@@ -53,10 +59,10 @@ export default defineContentScript({
     // Load preferred language from storage
     const loadPreferredLanguage = async () => {
       try {
-        const result = await browser.storage.local.get(['preferredLanguage']);
-        console.log('Content script loaded language preference:', result.preferredLanguage);
-        if (result.preferredLanguage && (result.preferredLanguage === 'en' || result.preferredLanguage === 'zh_CN')) {
-          currentLanguage = result.preferredLanguage;
+        const preferredLanguage = await preferredLanguageStorage.getValue();
+        console.log('Content script loaded language preference:', preferredLanguage);
+        if (preferredLanguage && (preferredLanguage === 'en' || preferredLanguage === 'zh_CN')) {
+          currentLanguage = preferredLanguage;
         }
       } catch (error) {
         console.error('Failed to load preferred language:', error);
