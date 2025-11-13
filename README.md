@@ -2,6 +2,8 @@
 
 A browser extension for the Marble WorldLabs website that displays detailed information about generated 3D worlds in a sidebar, including prompts, images, and downloadable assets.
 
+**中文文档**: [README_CN.md](./README_CN.md)
+
 ## Project Management
 
 **⚠️ Important**: This project is managed using **Bun** as the package manager and runtime. All commands should use `bun` instead of `npm`.
@@ -101,7 +103,7 @@ The extension automatically detects your browser's language and displays the app
 ## Technical Details
 
 - **Framework**: Built with WXT framework for browser extension development
-- **Frontend**: React with TypeScript  
+- **Frontend**: React with TypeScript
 - **Styling**: Custom CSS with WXT's automatic CSS injection
 - **API Integration**: Fetches data from `https://marble2-kgw-prod-iac1.wlt-ai.art/api/v1/worlds/`
 - **Permissions**: Only requires access to marble.worldlabs.ai domains
@@ -125,6 +127,7 @@ The extension consists of:
 ### Translation Keys
 
 All UI text is externalized to translation files:
+
 - Extension metadata: `extName`, `extDescription`
 - UI elements: `worldDetails`, `stats`, `prompt`, etc.
 - User messages: `loadingWorldData`, `copied`, `failedToLoadWorldData`

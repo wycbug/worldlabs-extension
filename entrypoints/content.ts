@@ -1,14 +1,95 @@
 import './style.css';
 
+type Language = 'en' | 'zh_CN';
+
+// Translation maps
+const translations = {
+  en: {
+    worldDetails: 'World Details',
+    loadingWorldData: 'Loading world data...',
+    failedToLoadWorldData: 'Failed to load world data',
+    showWorldDetails: 'Show World Details',
+    stats: 'Stats',
+    likes: '$1 likes',
+    prompt: 'Prompt',
+    copyPrompt: '📋 Copy Prompt',
+    copied: '✅ Copied!',
+    inputImage: 'Input Image',
+    downloadImage: '⬇️ Download Image',
+    model: 'Model',
+    exportFiles: 'Export Files',
+    downloadQuality: '⬇️ Download $1 Quality',
+    unknown: 'Unknown',
+    by: 'by $1'
+  },
+  zh_CN: {
+    worldDetails: '世界详情',
+    loadingWorldData: '正在加载世界数据...',
+    failedToLoadWorldData: '加载世界数据失败',
+    showWorldDetails: '显示世界详情',
+    stats: '统计',
+    likes: '$1 个赞',
+    prompt: '提示词',
+    copyPrompt: '📋 复制提示词',
+    copied: '✅ 已复制！',
+    inputImage: '输入图像',
+    downloadImage: '⬇️ 下载图像',
+    model: '模型',
+    exportFiles: '导出文件',
+    downloadQuality: '⬇️ 下载 $1 质量',
+    unknown: '未知',
+    by: '作者：$1'
+  }
+};
+
 export default defineContentScript({
   matches: ['*://marble.worldlabs.ai/*'],
   cssInjectionMode: 'manifest',
   main(ctx) {
     console.log('Marble WorldLabs extension loaded');
-    
+
+    let currentLanguage: Language = 'en';
+
+    // Load preferred language from storage
+    const loadPreferredLanguage = async () => {
+      try {
+        const result = await browser.storage.local.get(['preferredLanguage']);
+        console.log('Content script loaded language preference:', result.preferredLanguage);
+        if (result.preferredLanguage && (result.preferredLanguage === 'en' || result.preferredLanguage === 'zh_CN')) {
+          currentLanguage = result.preferredLanguage;
+        }
+      } catch (error) {
+        console.error('Failed to load preferred language:', error);
+      }
+    };
+
     // Helper function to get localized message
     const t = (key: string, substitutions?: string[]) => {
-      return (browser.i18n as any).getMessage(key, substitutions);
+      const message = translations[currentLanguage][key as keyof typeof translations.en];
+      if (substitutions) {
+        return substitutions.reduce((result, substitution, index) => {
+          return result.replace(`$${index + 1}`, substitution);
+        }, message);
+      }
+      return message;
+    };
+
+    // Update UI with new language
+    const updateLanguage = async (language: Language) => {
+      currentLanguage = language;
+      console.log('Language updated to:', language);
+
+      // Refresh current UI if sidebar is open
+      const sidebarContent = document.getElementById('sidebar-content');
+      if (sidebarContent && sidebarContent.innerHTML.includes(t('loadingWorldData'))) {
+        // If currently loading, update the loading text
+        sidebarContent.innerHTML = `<p class="marble-extension-text-body">${t('loadingWorldData')}</p>`;
+      }
+
+      const floatingButton = document.getElementById('marble-extension-button');
+      if (floatingButton) {
+        floatingButton.title = t('showWorldDetails');
+      }
     };
 
     // Extract world ID from URL
@@ -277,7 +358,17 @@ export default defineContentScript({
       }
     }, 1000); // Check every second
 
+    // Listen for language change messages from popup
+    browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+      if (message.type === 'LANGUAGE_CHANGED' && message.language) {
+        updateLanguage(message.language);
+      }
+    });
+
     // Initial initialization
     initializeOrUpdateExtension();
+
+    // Load preferred language at startup
+    loadPreferredLanguage();
   },
 });
